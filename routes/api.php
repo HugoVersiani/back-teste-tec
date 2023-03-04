@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\VehicleController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::Apiresource('vehicles', 'App\Http\Controllers\VehicleController');
+//Route::Apiresource('vehicle', VehicleController::class);
 
-
-Route::Apiresource('simulate', 'App\Http\Controllers\SimulateController');
+Route::get('vehicle', [VehicleController::class, 'index']);
+Route::post('simulate',[VehicleController::class,'simulate']);
+Route::post('vehicle',[VehicleController::class, 'create']);

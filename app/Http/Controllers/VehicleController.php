@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVehicleRequest;
 use App\Http\Requests\UpdateVehicleRequest;
 use App\Models\Vehicle;
+use App\Http\Controllers\SimulateController;
+use Illuminate\Support\Facades\Cache; //Redis
 
 class VehicleController extends Controller
 {
@@ -13,29 +15,16 @@ class VehicleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        
-        $vehicles = Vehicle::all();
+    public function index(){
 
-        if(is_null($vehicles) || $vehicles->count() == 0)  {
-            return response()->json(
-                ['error' => 'Nenhum veículo encontrado.'], 404
-            );
-        }
+        //Implementando redis
 
-      
+        $vehicles = Cache::remember('vehicles', 10000, function() {
+            return Vehicle::all();
+        });
+
         return $vehicles;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+       
     }
 
     /**
@@ -44,54 +33,61 @@ class VehicleController extends Controller
      * @param  \App\Http\Requests\StoreVehicleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreVehicleRequest $request)
+    public function create(StoreVehicleRequest $request)
     {
-        //
+        
+        Vehicle::create([
+            'image_path' => $request['image_path'],
+            'city'=> $request['city'],
+            'make'=> $request['make'],
+            'model'=> $request['model'],
+            'year'=>$request['year'],
+            'km'=>$request['km'],
+            'description'=>$request['description'],
+            'transmission'=>$request['transmission'],
+            'phone'=>$request['phone'],
+            'price'=> $request['price']
+        ]);
+        
+        return response()->json(['success'=>'Veículo cadastrado com sucesso!']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Vehicle $vehicle)
-    {
-        //
-    }
+    
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Vehicle $vehicle)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateVehicleRequest  $request
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateVehicleRequest $request, Vehicle $vehicle)
-    {
-        //
-    }
+    public function simulate(StoreVehicleRequest $request) {
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Vehicle $vehicle)
-    {
-        //
+        $feedback = [
+            'required' => 'O campo :attribute é obrigatório.'
+        ];
+
+        $validated = $request->validate([
+            'price'=>'required',
+            'down_payment'=>'required'
+        ], $feedback);
+        
+        $fees = array(
+            6 => 12.47,
+            12 => 15.56,
+            48 => 18.69
+        );
+
+        $installments = array ();
+
+        foreach($fees as $key => $fee) {
+            $remaining_price = $request['price'] - $request['down_payment'];
+            
+            $fee_price = (($fees[$key]/100)*$request['price']);
+
+            $installment_price = ($fee_price + $remaining_price)/$key;
+          
+           $installments[$key] = array(
+            'installment_price' => number_format($installment_price, 2)
+           );
+        }
+    
+        return $installments;
+
     }
 
 }
