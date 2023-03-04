@@ -19,3 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::Apiresource('vehicles', 'App\Http\Controllers\VehicleController');
+
+
+Route::Apiresource('simulate', 'App\Http\Controllers\SimulateController');

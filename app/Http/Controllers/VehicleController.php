@@ -93,4 +93,5 @@ class VehicleController extends Controller
     {
         //
     }
+
 }
