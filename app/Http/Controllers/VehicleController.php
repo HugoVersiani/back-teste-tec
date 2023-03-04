@@ -15,7 +15,16 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        $vehicles = Vehicle::all(); 
+        
+        $vehicles = Vehicle::all();
+
+        if(is_null($vehicles) || $vehicles->count() == 0)  {
+            return response()->json(
+                ['error' => 'Nenhum veículo encontrado.'], 404
+            );
+        }
+
+      
         return $vehicles;
     }
 
