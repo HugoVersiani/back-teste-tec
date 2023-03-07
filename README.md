@@ -26,6 +26,13 @@ Acesse o container app com o bash como usuário root
 docker-compose exec --user=root app bash
 ```
 
+Acionane permissões da pasta storage e bootstrap 
+
+```sh
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+```
+
 Instale as dependências do projeto
 ```sh
 composer update
@@ -50,12 +57,6 @@ php artisan db:seed
 Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
 
-Obs: se porventura obtiver algum problema com permissões da pasta storage, rode o comando 
-
-```sh
-chmod -R 775 storage
-chmod -R 775 bootstrap/cache
-```
 
 # SOBRE A API (DOCUMENTAÇÃO)
 
