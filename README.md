@@ -28,6 +28,7 @@ docker-compose exec --user=root app bash
 
 Instale as dependências do projeto
 ```sh
+composer update
 composer install
 ```
 
@@ -38,7 +39,7 @@ php artisan key:generate
 
 Rode as migrations
 ```sh
-php artisan migration
+php artisan migrate
 ```
 
 Rode as seeds 
