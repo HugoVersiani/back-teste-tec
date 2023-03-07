@@ -62,6 +62,7 @@ chmod -R 775 bootstrap/cache
 
 - Escolhi fazer essa aplicação utilizando a arquitetura tradicional de API no Laravel, totalmente separada do front, que está alocado em outro repositório;<br/>
 - Para rodar a API localmente usei o Docker (Nginx, MySql, Redis) no Windows 11. E o Insomnia para testar requisições;<br />
+- Por algum motivo desconhecido, as requisições da API usando o Docker com Win11 ficaram bastante lentas (acredito que seja problema com o WSL2);<br />
 
 ## Melhorias e Diferenciais:
 
@@ -90,7 +91,6 @@ Método: GET;<br/>
 Recebe:<br/><br/>
 
 <br/>
-<br/>
 
 ### http://localhost:8989/api/vehicle
 
@@ -116,7 +116,6 @@ Recebe: <br/><br/>
 
 
 <br/>
-<br/>
 
 ### http://localhost:8989/api/simulate
 
@@ -133,5 +132,3 @@ Recebe:<br/><br/>
 ```
 
 <br/>
-<br/>
-
