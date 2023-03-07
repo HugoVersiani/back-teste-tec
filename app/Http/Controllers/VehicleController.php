@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVehicleRequest;
 use App\Http\Requests\UpdateVehicleRequest;
 use App\Models\Vehicle;
-use App\Http\Controllers\SimulateController;
 use Illuminate\Support\Facades\Cache; //Redis
 
 class VehicleController extends Controller
@@ -53,41 +52,5 @@ class VehicleController extends Controller
     }
 
     
-
-
-    public function simulate(StoreVehicleRequest $request) {
-
-        $feedback = [
-            'required' => 'O campo :attribute é obrigatório.'
-        ];
-
-        $validated = $request->validate([
-            'price'=>'required',
-            'down_payment'=>'required'
-        ], $feedback);
-        
-        $fees = array(
-            6 => 12.47,
-            12 => 15.56,
-            48 => 18.69
-        );
-
-        $installments = array ();
-
-        foreach($fees as $key => $fee) {
-            $remaining_price = $request['price'] - $request['down_payment'];
-            
-            $fee_price = (($fees[$key]/100)*$request['price']);
-
-            $installment_price = ($fee_price + $remaining_price)/$key;
-          
-           $installments[$key] = array(
-            'installment_price' => number_format($installment_price, 2)
-           );
-        }
-    
-        return $installments;
-
-    }
 
 }
