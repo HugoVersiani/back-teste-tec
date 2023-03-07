@@ -49,7 +49,7 @@ php artisan db:seed
 Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
 
-Obs: se por ventura obtiver algum problema com permissões da pasta storage, rode o comando 
+Obs: se porventura obtiver algum problema com permissões da pasta storage, rode o comando 
 
 ```sh
 chmod -R 775 storage
