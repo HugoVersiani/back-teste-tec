@@ -18,7 +18,7 @@ class VehicleController extends Controller
 
         //Implementando redis
 
-        $vehicles = Cache::remember('vehicles', 10000, function() {
+        $vehicles = Cache::remember('vehicles', 1, function() {
             return Vehicle::all();
         });
 
@@ -35,7 +35,7 @@ class VehicleController extends Controller
     public function create(StoreVehicleRequest $request)
     {
         
-        Vehicle::create([
+        $teste = Vehicle::create([
             'image_path' => $request['image_path'],
             'city'=> $request['city'],
             'make'=> $request['make'],
@@ -47,7 +47,6 @@ class VehicleController extends Controller
             'phone'=>$request['phone'],
             'price'=> $request['price']
         ]);
-        
         return response()->json(['success'=>'Veículo cadastrado com sucesso!']);
     }
 
