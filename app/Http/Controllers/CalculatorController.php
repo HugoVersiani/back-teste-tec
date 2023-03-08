@@ -29,7 +29,7 @@ class CalculatorController extends Controller
 
         $vehicle = Vehicle::findOrFail($request['vehicle_id']);
 
-        if($request['down_payment']/100 >= $vehicle['price']){
+        if($request['down_payment'] >= $vehicle['price']){
             return response()->json(['error' => 'O valor de entrada deve ser menor que o valor do veiculo.'], 422);
         }
 

@@ -18,7 +18,7 @@ class VehicleController extends Controller
 
         //Implementando redis
 
-        $vehicles = Cache::remember('vehicles', 1, function() {
+        $vehicles = Cache::remember('vehicle', 10, function() {
             return Vehicle::all();
         });
 
