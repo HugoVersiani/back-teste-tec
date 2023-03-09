@@ -75,23 +75,32 @@ Acesse o projeto
 
 ## Funcionalidades da api:
 
-A API conta com 3 endpoints/funcionalidades sendo elas:
-
+A API conta com 6 endpoints/funcionalidades sendo elas:
+- Autenticação JWT(login);
 - Cadastrar veículo;
 - Retornar todos os veículos;
+- Retornar veículo pelo ID;
 - Simular financiamento;
 
 <br/>
 
 ## EndPoints:
 
-### http://localhost:8989/api/vehicle
+### http://localhost:8989/api/login
 
 **veículos:** <br/>
-Retorna todos os veículos do bd;<br/>
-Método: GET;<br/>
+Retorna um Json Web Token de acesso;<br/>
+Método: POST;<br/>
 Recebe:<br/><br/>
 
+``` bash
+
+{
+	"email":"admin@email.com",
+	"password":"password"
+}
+
+```
 <br/>
 
 ### http://localhost:8989/api/vehicle
@@ -99,6 +108,8 @@ Recebe:<br/><br/>
 **veículos:** <br/>
 Cadastra novos veículos;<br/>
 Método: POST;<br/>
+Header: Authorization: Bearer ~JWT~<br/><br/>
+Rota protegida por middleware<br/>
 Recebe: <br/><br/>
 
 ```bash
@@ -115,6 +126,26 @@ Recebe: <br/><br/>
         "price": 50000.00
 }
 ```
+
+<br/>
+
+### http://localhost:8989/api/vehicle
+
+**veículos:** <br/>
+Retorna todos os veículos do bd;<br/>
+Método: GET;<br/>
+Recebe:<br/><br/>
+
+
+
+<br/>
+
+### http://localhost:8989/api/vehicle/vehicle_id
+
+**veículos:** <br/>
+Retorna o veículo correspondente ao ID passado;<br/>
+Método: GET;<br/>
+Recebe:<br/><br/>
 
 
 <br/>

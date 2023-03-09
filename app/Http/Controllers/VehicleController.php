@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVehicleRequest;
 use App\Http\Requests\UpdateVehicleRequest;
 use App\Models\Vehicle;
+use App\Models\User;
 use Illuminate\Support\Facades\Cache; //Redis
 
 class VehicleController extends Controller
@@ -18,11 +19,13 @@ class VehicleController extends Controller
 
         //Implementando redis
 
-        $vehicles = Cache::remember('vehicle', 10, function() {
-            return Vehicle::all();
-        });
+         return User::all();
 
-        return $vehicles;
+       // $vehicles = Cache::remember('vehicle', 10, function() {
+         //   return Vehicle::all();
+       // });
+
+        //return $vehicles;
        
     }
 
