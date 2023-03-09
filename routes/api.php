@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\CalculatorController;
+use App\Http\Controllers\AuthController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('vehicle', [VehicleController::class, 'index']);
 Route::post('simulate',[CalculatorController::class,'simulate']);
 Route::post('vehicle',[VehicleController::class, 'create']);
+
+
+Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout']);
+Route::post('refresh', [AuthController::class, 'refresh']);
+Route::post('me', [AuthController::class, 'me']);
