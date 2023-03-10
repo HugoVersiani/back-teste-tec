@@ -24,6 +24,7 @@ Route::middleware('jwt.auth')->group(
 );
 
 Route::get('vehicle', [VehicleController::class, 'index']);
+Route::get('vehicle/{id}', [VehicleController::class, 'getById']);
 Route::post('simulate',[CalculatorController::class,'simulate']);
 
 

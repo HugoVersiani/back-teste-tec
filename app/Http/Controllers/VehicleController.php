@@ -19,13 +19,11 @@ class VehicleController extends Controller
 
         //Implementando redis
 
-         return User::all();
+        $vehicles = Cache::remember('vehicle', 10, function() {
+            return Vehicle::all();
+        });
 
-       // $vehicles = Cache::remember('vehicle', 10, function() {
-         //   return Vehicle::all();
-       // });
-
-        //return $vehicles;
+        return $vehicles;
        
     }
 
@@ -51,6 +49,17 @@ class VehicleController extends Controller
             'price'=> $request['price']
         ]);
         return response()->json(['success'=>'Veículo cadastrado com sucesso!']);
+    }
+
+    public function getById($id)
+    {
+        $vehicle = Vehicle::find($id);
+
+        if(empty($vehicle)){
+            return response()->json(['error'=>'Nenhum veículo foi encontrado'],404);
+        }
+
+        return response()->json($vehicle);
     }
 
     
