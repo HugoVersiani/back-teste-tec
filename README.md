@@ -85,7 +85,7 @@ A API conta com 6 endpoints/funcionalidades sendo elas:
 
 ### http://localhost:8989/api/login
 
-**veículos:** <br/>
+**Logar:** <br/>
 Retorna um Json Web Token de acesso;<br/>
 Método: POST;<br/>
 Recebe:<br/><br/>
@@ -102,7 +102,7 @@ Recebe:<br/><br/>
 
 ### http://localhost:8989/api/vehicle
 
-**veículos:** <br/>
+**Cadastro de Veículo:** <br/>
 Cadastra novos veículos;<br/>
 Método: POST;<br/>
 Header: Authorization: Bearer ~JWT~<br/><br/>
@@ -128,7 +128,7 @@ Recebe: <br/><br/>
 
 ### http://localhost:8989/api/vehicle
 
-**veículos:** <br/>
+**Todos os Veículos:** <br/>
 Retorna todos os veículos do bd;<br/>
 Método: GET;<br/>
 Recebe:<br/><br/>
@@ -139,7 +139,7 @@ Recebe:<br/><br/>
 
 ### http://localhost:8989/api/vehicle/vehicle_id
 
-**veículos:** <br/>
+**Veículo pelo Id:** <br/>
 Retorna o veículo correspondente ao ID passado;<br/>
 Método: GET;<br/>
 Recebe:<br/><br/>
@@ -149,7 +149,7 @@ Recebe:<br/><br/>
 
 ### http://localhost:8989/api/simulate
 
-**simulate:** <br/>
+**Calcular o financiamento:** <br/>
 Faz a simuação do financiamento;<br/>
 Método: POST;<br/>
 Recebe:<br/><br/>
