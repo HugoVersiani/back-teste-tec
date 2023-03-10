@@ -84,7 +84,7 @@ A API conta com 6 endpoints/funcionalidades sendo elas:
 <br/>
 <br/>
 
-## EndPoints:
+## Endpoints:
 
 ### http://localhost:8989/api/login
 
