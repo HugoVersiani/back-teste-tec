@@ -1,5 +1,5 @@
 
-# COMO RODAR ESTE PROJETO
+# Rodar o projeto:
 
 ### Passo a passo
 Clone Repositório
@@ -26,7 +26,7 @@ Acesse o container app com o bash como usuário root
 docker-compose exec --user=root app bash
 ```
 
-Acionane permissões da pasta storage e bootstrap 
+Acione permissões da pasta storage e bootstrap 
 
 ```sh
 chmod -R 775 storage
@@ -58,19 +58,19 @@ Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
 
 
-# SOBRE A API (DOCUMENTAÇÃO)
+# Sobre a API (Documentação)
 
 
 ## Melhorias e Diferenciais:
 
 - Utilizei o docker para rodar o projeto;<br/>
-- Utilizei o Redis para o armazenamendo em cache;<br/>
+- Utilizei o Redis para o armazenamendo em cache dos carros;<br/>
 - Criei alguns endpoints a mais:<br/>
 - para a autenticação (com JWT).<br/>
 - para o cadastro de veículos (com middleware).<br/>
 - para obter veiculo pelo id.<br/>
 
-## Funcionalidades da api:
+## Funcionalidades da API:
 
 A API conta com 6 endpoints/funcionalidades sendo elas:
 - Autenticação JWT(login);
