@@ -140,13 +140,13 @@ Recebe:<br/><br/>
 
 <br/>
 
-### http://localhost:8989/api/vehicle/vehicle_id
+### http://localhost:8989/api/vehicle/id
 
 **Veículo pelo Id:** <br/>
 Retorna o veículo correspondente ao ID passado;<br/>
 Método: GET;<br/>
-Recebe:<br/><br/>
-
+Recebe: id: number(int)<br/><br/>
+    
 
 <br/>
 
