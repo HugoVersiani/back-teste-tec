@@ -60,18 +60,15 @@ Acesse o projeto
 
 # SOBRE A API (DOCUMENTAÇÃO)
 
-## Considerações:
-
-- Escolhi fazer essa aplicação utilizando a arquitetura tradicional de API no Laravel, totalmente separada do front, que está alocado em outro repositório;<br/>
-- Para rodar a API localmente usei o Docker (Nginx, MySql, Redis) no Windows 11. E o Insomnia para testar requisições;<br />
-- Por algum motivo desconhecido, as requisições da API usando o Docker com Win11 ficaram bastante lentas (acredito que seja problema com o WSL2);<br />
 
 ## Melhorias e Diferenciais:
 
 - Utilizei o docker para rodar o projeto;<br/>
 - Utilizei o Redis para o armazenamendo em cache;<br/>
-- Criei um endpoint a mais, para o cadastro de veículos. (O plano era criar um pequeno painel para o cadastro de veículos, se desse tempo).<br/>
-
+- Criei alguns endpoints a mais:<br/>
+- para a autenticação (com JWT).<br/>
+- para o cadastro de veículos (com middleware).<br/>
+- para obter veiculo pelo id.<br/>
 
 ## Funcionalidades da api:
 
