@@ -108,7 +108,7 @@ Recebe:<br/><br/>
 **Cadastro de Veículo:** <br/>
 Cadastra novos veículos;<br/>
 Método: POST;<br/>
-Header: Authorization: Bearer ~JWT~<br/><br/>
+Header: Authorization: Bearer SEU_JWT<br/><br/>
 Rota protegida por middleware<br/>
 Recebe: <br/><br/>
 
